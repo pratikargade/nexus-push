@@ -20,9 +20,9 @@ jobs:
       - name: Login to Docker Hub
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-         image: my-app
+         image: phoenix-docker-hosted/my-app
          tags: v1, latest
-         registry: https://nexus.ravindra.tech/repository/phoenix-docker-hosted/
+         registry: https://nexus.ravindra.tech
          dockerfile: app/Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_PASSWORD }}  
