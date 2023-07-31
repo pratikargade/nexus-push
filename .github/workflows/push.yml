@@ -18,7 +18,18 @@ jobs:
         with:
           fetch-depth: 0  
 
-        
+      - uses: azure/setup-kubectl@v3
+        with:
+           version: '<version>' # default is latest stable
+        id: install
+      - uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig:  ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
+          context: nest.ravindra.tech  #If left unspecified, current-context from kubeconfig is used as default
+        id: setcontext 
+      - name: get po
+        run: kubectl get po -A               
       - name: Login to Docker Hub
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
