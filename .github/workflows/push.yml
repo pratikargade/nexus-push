@@ -17,11 +17,12 @@ jobs:
       - name: Push
         run: curl -u ${{ secrets.NEXUS_USER }}:${{ secrets.NEXUS_PASS }} https://nexus.ravindra.tech/repository/nexus-hosted/ --upload-file sample-0.1.0.tgz
         shell: bash   
+      - name: Check kubectl
+        run: kubectl version  
       - name: Create kubeconfig
         run: |
           mkdir ${HOME}/.kube
           echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
-          cat ${HOME}/.kube/config
       - name: Deploy app
         run: kubectl apply -f app/    
 
