@@ -20,7 +20,7 @@ jobs:
       - name: Login to Docker Hub
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-         image: phoenix-docker-hosted/my-app
+         image: sampleapp
          tags: v1, latest
          registry: nexus.ravindra.tech
          dockerfile: app/Dockerfile
