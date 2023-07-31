@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   annotations:
-    notifications.argoproj.io/subscribe.on-sync-succeeded.slack: phoenix-project-deployment 
+#   notifications.argoproj.io/subscribe.on-sync-succeeded.slack: phoenix-project-deployment 
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   name: pheonix-sonarqube
