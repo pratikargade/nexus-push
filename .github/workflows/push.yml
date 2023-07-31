@@ -18,14 +18,12 @@ jobs:
         with:
           fetch-depth: 0  
 
-      - uses: tenhaus/get-release-or-tag@v2
-        id: tag
         
       - name: Login to Docker Hub
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
          image: sampleapp
-         tags: ${{ steps.tag.outputs.tag }}
+         tags: ${{ github.sha }}
          registry: nexus.ravindra.tech
          dockerfile: app/Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
