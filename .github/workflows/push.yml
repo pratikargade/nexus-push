@@ -17,11 +17,16 @@ jobs:
         run: helm create sample
         shell: bash   
 
+      - name: Ls
+        run: ls -lhrt  
+
       - name: Lint
         run: helm lint  
 
       - name: Package
         run: helm package sample
-        
-          
+
+
+
+
     
