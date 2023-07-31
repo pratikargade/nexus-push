@@ -23,7 +23,7 @@ jobs:
          image: ${DOCKER_USERNAME}/my-app
          tags: v1, latest
          registry: https://nexus.ravindra.tech/repository/phoenix-docker-hosted/
-         dockerfile: nexus-push/Dockerfile
+         dockerfile: app/Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_PASSWORD }}  
 
