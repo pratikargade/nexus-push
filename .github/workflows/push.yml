@@ -12,7 +12,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  
-
+      - name: Lint and Package
+        run: helm lint sample/ && helm package sample/
       - name: Push
         run: curl -u ${{ secrets.NEXUS_USER }}:${{ secrets.NEXUS_PASS }} https://nexus.ravindra.tech/repository/nexus-hosted/ --upload-file sample-0.1.0.tgz
         shell: bash   
