@@ -13,18 +13,13 @@ jobs:
         with:
           fetch-depth: 0  
 
-      - name: Create
-        run: helm create sample
+      - name: Push
+        run: curl -u ${{ secrets.NEXUS_USER }}:${{ secrets.NEXUS_PASS }} https://nexus.ravindra.tech/repository/nexus-hosted/ --upload-file sample-0.1.0.tgz
         shell: bash   
 
-      - name: Ls
-        run: ls -lhrt  
 
-      - name: Lint
-        run: helm lint  
 
-      - name: Package
-        run: helm package sample
+
 
 
 
