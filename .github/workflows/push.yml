@@ -18,11 +18,10 @@ jobs:
         with:
           fetch-depth: 0  
       - name: Get Hash
-        id: hash
-        run: echo "git_hash=$(git rev-parse --short "$GITHUB_SHA")" >> $GITHUB_HASH
-  
-      - name: Check Hash
-        run: echo "${{ env.hash }}"        
+        run: |
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          echo ${{ git_hash }}
+        
       - name: Login to Docker Hub
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
