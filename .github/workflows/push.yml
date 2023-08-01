@@ -51,7 +51,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
          image: sampleapp
-         tags: ${{ github.sha }}
+         tags: latest
          registry: nexus.ravindra.tech
          dockerfile: app/Dockerfile
          username: ${{ secrets.DOCKER_USERNAME }}
