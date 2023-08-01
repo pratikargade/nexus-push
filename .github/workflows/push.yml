@@ -17,6 +17,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  
+      - name: Sonarqube scan
+        uses: kitabisa/sonarqube-action@master
+        with:
+          host: ${{ secrets.SONARQUBE_HOST }}
+          login: ${{ secrets.SONARQUBE_TOKEN }}
+          projectBaseDir: "sample"
+          projectKey: "pheonix-projects"          
 
       - uses: azure/k8s-set-context@v1
         with:
