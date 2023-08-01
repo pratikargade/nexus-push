@@ -30,8 +30,7 @@ jobs:
           kubeconfig:  ${{ secrets.KUBE_CONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
           context: nest.ravindra.tech  #If left unspecified, current-context from kubeconfig is used as default
         id: setcontext 
-      # - name: Deploy Sonarqube
-      #   run: kubectl apply -f ${{ github.workspace }}/argocd/sonarqube.yml             
+            
       - name: Login to Docker Hub
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
@@ -48,6 +47,8 @@ jobs:
         run: curl -u ${{ secrets.NEXUS_USER }}:${{ secrets.NEXUS_PASS }} https://nexus.ravindra.tech/repository/nexus-hosted/ --upload-file sample-0.1.0.tgz
         shell: bash
 
+      - name: Deploy Sample App
+        run: kubectl apply -f ${{ github.workspace }}/argocd/application.yml 
 
 
 
