@@ -24,6 +24,11 @@ jobs:
           login: ${{ secrets.SONARQUBE_TOKEN }}
           projectKey: "pheonix-projects"          
 
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.8.2
+        with:
+          target: http://sonarqube.ravindra.tech
+          
       - uses: azure/k8s-set-context@v1
         with:
           method: kubeconfig
@@ -31,7 +36,7 @@ jobs:
           context: nest.ravindra.tech  #If left unspecified, current-context from kubeconfig is used as default
         id: setcontext 
             
-      - name: Login to Docker Hub
+      - name: Login to Docker Hub and Push image
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
          image: sampleapp
