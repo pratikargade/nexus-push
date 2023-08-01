@@ -64,7 +64,7 @@ jobs:
         shell: bash
 
       - name: Deploy Sample App
-        run: kubectl apply -f ${{ github.workspace }}/argocd/myapp.yml 
+        run: kubectl apply -f ${{ github.workspace }}/argocd/application.yml 
 
 
 
