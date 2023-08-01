@@ -13,11 +13,12 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: nexus.ravindra.tech/sampleapp
-        tag: latest
+        image: nexus.ravindra.tech/sampleapp:latest
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: phoenix-docker-hosted        

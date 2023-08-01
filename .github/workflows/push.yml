@@ -24,14 +24,14 @@ jobs:
           login: ${{ secrets.SONARQUBE_TOKEN }}
           projectKey: "pheonix-projects"          
 
-      # - name: ZAP Scan
-      #   uses: zaproxy/action-baseline@v0.8.2
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     docker_name: 'owasp/zap2docker-stable'
-      #     target: 'http://sonarqube.ravindra.tech'
-      #     rules_file_name: '.zap/rules.tsv'
-      #     cmd_options: '-a'
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0.8.2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'owasp/zap2docker-stable'
+          target: 'http://argo.ravindra.tech/'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
           
 
       - uses: azure/k8s-set-context@v1
